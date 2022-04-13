@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include linux.dev_playbook"
+      include_role:
+        name: "linux.dev_playbook"
