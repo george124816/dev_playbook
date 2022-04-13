@@ -1,2 +1,44 @@
 ---
 # tasks file for dev_playbook
+- name: Update system
+  pacman:
+    update_cache: yes
+    upgrade: yes
+
+# TODO: separate base and dev tasks
+- name: Install list of packages
+  pacman:
+    name: 
+    - amd-ucode
+    - ansible
+    - aws-cli
+    - base-devel
+    - bluez
+    - bluez-utils
+    - dbeaver
+    - deluge
+    - dhcpcd
+    - git
+    - i3
+    - rofi
+    - rofi-emoji
+    - seahorse
+    - telegram-desktop
+    - tree
+    - unrar
+    - unzip
+    - vault
+    - xorg
+    - zsh
+
+- name: Enable Bluetooth
+  ansible.builtin.systemd:
+    name: bluetooth 
+    enabled: yes
+
+# - name: Install yay
+
+# - name: Install packages from yay
+#   yay:
+#     name:
+#     - slack-desktop
