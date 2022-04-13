@@ -1,12 +1,14 @@
 ---
 # tasks file for dev_playbook
 - name: Update system
+  become: yes
   pacman:
     update_cache: yes
     upgrade: yes
 
 # TODO: separate base and dev tasks
 - name: Install list of packages
+  become: yes
   pacman:
     name: 
     - amd-ucode
@@ -32,7 +34,8 @@
     - zsh
 
 - name: Enable Bluetooth
-  ansible.builtin.systemd:
+  become: true
+  systemd:
     name: bluetooth 
     enabled: yes
 
